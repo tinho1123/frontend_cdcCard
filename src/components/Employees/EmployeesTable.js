@@ -5,7 +5,8 @@ import './styles.css'
 function EmployeesTable() {
   const {
     setEditEmployeePopUp,
-    setDeleteEmployeePopUp
+    setDeleteEmployeePopUp,
+    employees,
   } = useContext(Context)
   return (
     <div>
@@ -18,10 +19,16 @@ function EmployeesTable() {
           <th></th>
         </thead>
         <tr>
-          <td>Wellington Carvalho</td>
-          <td>TI</td>
-          <td>R$10.000</td>
-          <td>10/09/1999</td>
+          {employees && employees.map((employee) => {
+            return (
+              <>
+                <td>{employee.name}</td>
+                <td>{employee.Department.department}</td>
+                <td>{employee.salary}</td>
+                <td>{employee.birth_date}</td>
+              </>
+            )
+          })}
           <td>
             <button
               onClick={() => setEditEmployeePopUp(true)}

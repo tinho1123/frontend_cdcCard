@@ -7,19 +7,19 @@ function ContextDataProvider({ children }) {
     const [editEmployeePopUp, setEditEmployeePopUp] = useState(false);
     const [deleteEmployeePopUp, setDeleteEmployeePopUp] = useState(false);
 
-    const [employee, setEmployee] = useState()
+    const [employees, setEmployees] = useState()
     
     useEffect(() => {
         getData()
-    }, [setEmployee])
+    }, [setEmployees])
 
     const getData = async () => {
         await api.get('/employee', )
-        .then(({ data }) => setEmployee(data))
+        .then(({ data }) => setEmployees(data))
         .catch((err) => console.log(err))
     }
 
-    console.log(employee);
+    console.log(employees);
     const value = {
         createEmployeePopUp,
         setCreateEmployeePopUp,
@@ -27,8 +27,8 @@ function ContextDataProvider({ children }) {
         setEditEmployeePopUp,
         deleteEmployeePopUp,
         setDeleteEmployeePopUp,
-        employee,
-        setEmployee
+        employees,
+        setEmployees
     }
 
     return (
