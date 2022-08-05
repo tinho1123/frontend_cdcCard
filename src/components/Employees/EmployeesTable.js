@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Context from '../../contexts/Context'
 import './styles.css'
 
 function EmployeesTable() {
+  const {
+    setEditEmployeePopUp,
+    setDeleteEmployeePopUp
+  } = useContext(Context)
   return (
     <div>
       <table className='tableAlign'>
@@ -17,7 +22,17 @@ function EmployeesTable() {
           <td>TI</td>
           <td>R$10.000</td>
           <td>10/09/1999</td>
-          <td><button className='buttonWarning'>Editar</button> - <button className='buttonDanger'>Excluir</button></td>
+          <td>
+            <button
+              onClick={() => setEditEmployeePopUp(true)}
+              className='buttonWarning'>Editar
+            </button> 
+            - 
+            <button
+              onClick={() => setDeleteEmployeePopUp(true)}
+              className='buttonDanger'>Excluir
+            </button>
+          </td>
         </tr>
         <tr>
           <td>Ana Clara da Silva lourenço</td>

@@ -1,9 +1,12 @@
 import Employee from './pages/employee/Employee';
+import ContextDataProvider from './contexts/ContextDataProvider';
 
 function App() {
   return (
     <div className="App">
-      <Employee />
+      <ContextDataProvider>
+        <Employee />
+      </ContextDataProvider>
     </div>
   );
 }

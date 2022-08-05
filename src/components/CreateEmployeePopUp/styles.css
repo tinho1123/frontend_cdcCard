@@ -1,0 +1,31 @@
+.createEmployeePopUpContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createEmployeePopUp__container {
+    position: relative;
+    padding: 2rem;
+    width: 100%;
+    max-width: 640px;
+    background-color: #FFFF;
+}
+
+.createEmployeePopUp__container .createEmployeePopUp__exit {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
