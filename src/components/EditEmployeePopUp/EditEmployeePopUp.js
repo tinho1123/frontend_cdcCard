@@ -20,32 +20,32 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
     return (trigger) ? (
       <div className='createEmployeePopUpContainer'>
         <div className='createEmployeePopUp__container'>
-          <h4 style={{ textAlign: 'center' }}>Novo funcionário</h4>
+          <h4 style={{ textAlign: 'center' }}>Editar funcionário</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div className='labelInput'>
               <label>
                 Nome
               </label>
-              <input type='text' id='name' onChange={(e) => handleChange(e.target)}/>
+              <input type='text' id='name' onChange={(e) => handleChange(e.target)} value={informationEmployee.name}/>
             </div>
             <div className='labelInput' htmlFor='cpf'>
               <label>CPF</label>
-              <input type='text' id='cpf' onChange={(e) => handleChange(e.target)} />
+              <input type='text' id='cpf' onChange={(e) => handleChange(e.target)} value={informationEmployee.cpf}/>
             </div>
             <div className='labelInput' htmlFor='department'>
               <label>Departamento</label>
-              <select id='department' onChange={(e) => handleChange(e.target)}>
+              <select id='department' onChange={(e) => handleChange(e.target)} value={informationEmployee.department}>
                 <option>TI</option>
                 <option>Administração</option>
               </select>
             </div>
             <div className='labelInput' htmlFor='salary'>
               <label>Salário</label>
-              <input type='text' id='salary' onChange={(e) => handleChange(e.target)}/>
+              <input type='text' id='salary' onChange={(e) => handleChange(e.target)} value={informationEmployee.salary}/>
             </div>
             <div className='labelInput' htmlFor='birthDate'>
               <label>Data de Nascimento</label>
-              <input type='text' id='birthDate' onChange={(e) => handleChange(e.target)}/>
+              <input type='text' id='birthDate' onChange={(e) => handleChange(e.target)} value={informationEmployee.birthDate}/>
             </div>
             <div style={{ display: 'flex', gap: '2rem' }}>
             <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Cancelar</button>

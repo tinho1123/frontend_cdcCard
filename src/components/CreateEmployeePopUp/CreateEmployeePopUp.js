@@ -15,6 +15,7 @@ const handleChange = ({ id, value }) => {
     ...informationEmployee,
     [id]: value
   })
+
 }
 
   return (trigger) ? (
@@ -26,26 +27,28 @@ const handleChange = ({ id, value }) => {
             <label>
               Nome
             </label>
-            <input type='text' id='name' onChange={(e) => handleChange(e.target)}/>
+            <input type='text' id='name' onChange={(e) => handleChange(e.target)} value={informationEmployee.name}/>
           </div>
           <div className='labelInput' htmlFor='cpf'>
             <label>CPF</label>
-            <input type='text' id='cpf' onChange={(e) => handleChange(e.target)} />
+            <input type='text' id='cpf' onChange={(e) => handleChange(e.target)} value={informationEmployee.cpf}/>
           </div>
           <div className='labelInput' htmlFor='department'>
             <label>Departamento</label>
-            <select id='department' onChange={(e) => handleChange(e.target)}>
+            <select id='department' onChange={(e) => handleChange(e.target)} value={informationEmployee.department}>
               <option>TI</option>
               <option>Administração</option>
             </select>
           </div>
           <div className='labelInput' htmlFor='salary'>
             <label>Salário</label>
-            <input type='text' id='salary' onChange={(e) => handleChange(e.target)}/>
+            <div>R$
+            <input type='text' id='salary' onChange={(e) => handleChange(e.target)} value={informationEmployee.salary}/>
+            </div>
           </div>
           <div className='labelInput' htmlFor='birthDate'>
             <label>Data de Nascimento</label>
-            <input type='text' id='birthDate' onChange={(e) => handleChange(e.target)}/>
+            <input type='text' id='birthDate' onChange={(e) => handleChange(e.target)} value={informationEmployee.birthDate}/>
           </div>
           <div style={{ display: 'flex', gap: '2rem' }}>
           <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Cancelar</button>

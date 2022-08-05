@@ -27,7 +27,7 @@ function EmployeesTable() {
               onClick={() => setEditEmployeePopUp(true)}
               className='buttonWarning'>Editar
             </button> 
-            - 
+            <label> - </label> 
             <button
               onClick={() => setDeleteEmployeePopUp(true)}
               className='buttonDanger'>Excluir
@@ -39,7 +39,17 @@ function EmployeesTable() {
           <td>Engenharia</td>
           <td>R$20.000</td>
           <td>16/05/2000</td>
-          <td><button className='buttonWarning'>Editar</button> - <button className='buttonDanger'>Excluir</button></td>
+          <td>
+            <button
+              onClick={() => setEditEmployeePopUp(true)}
+              className='buttonWarning'>Editar
+            </button> 
+            <label> - </label> 
+            <button
+              onClick={() => setDeleteEmployeePopUp(true)}
+              className='buttonDanger'>Excluir
+            </button>
+          </td>
         </tr>
       </table>
     </div>
