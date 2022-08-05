@@ -1,0 +1,30 @@
+.filterEmployeeContainer {
+
+    height: 10rem;
+    display: flex;
+    background-color: #969A97;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterEmployee__content {
+    width: 95%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelInput > select{
+    width: 15rem 
+}
+
+.buttonFilter {
+    padding: 1rem;
+}

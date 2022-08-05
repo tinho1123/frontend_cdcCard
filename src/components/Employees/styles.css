@@ -1,0 +1,26 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+thead {
+    background-color: #969A97;
+}
+.tableAlign {
+    margin-top: 1rem;
+    width: 100% !important;
+}
+
+.buttonWarning {
+    background-color: yellow;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.buttonDanger {
+    background-color: red;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
