@@ -6,7 +6,7 @@ function EmployeesTable() {
   const {
     setEditEmployeePopUp,
     setDeleteEmployeePopUp,
-    employees,
+    filteredEmployee,
   } = useContext(Context)
   return (
     <div>
@@ -19,45 +19,35 @@ function EmployeesTable() {
           <th></th>
         </thead>
         <tr>
-          {employees && employees.map((employee) => {
+          {filteredEmployee && filteredEmployee.map((employee) => {
             return (
               <>
                 <td>{employee.name}</td>
                 <td>{employee.Department.department}</td>
                 <td>{employee.salary}</td>
                 <td>{employee.birth_date}</td>
+              <td>
+            <button
+              onClick={() => setEditEmployeePopUp({
+                active: true,
+                idEmployee: employee.id
+              })}
+              className='buttonWarning'>Editar
+            </button> 
+            <label> - </label> 
+            <button
+              onClick={() => setDeleteEmployeePopUp({
+                active: true,
+                idEmployee: employee.id
+              })}
+              className='buttonDanger'>Excluir
+            </button>
+          </td>
               </>
             )
           })}
-          <td>
-            <button
-              onClick={() => setEditEmployeePopUp(true)}
-              className='buttonWarning'>Editar
-            </button> 
-            <label> - </label> 
-            <button
-              onClick={() => setDeleteEmployeePopUp(true)}
-              className='buttonDanger'>Excluir
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>Ana Clara da Silva lourenço</td>
-          <td>Engenharia</td>
-          <td>R$20.000</td>
-          <td>16/05/2000</td>
-          <td>
-            <button
-              onClick={() => setEditEmployeePopUp(true)}
-              className='buttonWarning'>Editar
-            </button> 
-            <label> - </label> 
-            <button
-              onClick={() => setDeleteEmployeePopUp(true)}
-              className='buttonDanger'>Excluir
-            </button>
-          </td>
-        </tr>
+          </tr>
+ 
       </table>
     </div>
   )

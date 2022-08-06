@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import Context from '../../contexts/Context';
 import './styles.css';
 
 function FilterEmployee() {
+  const { departments, setFilteredEmployeeOnFire } = useContext(Context);
   const [filter, setFilter] = useState({
     name: '',
     department: ''
@@ -17,7 +19,7 @@ function FilterEmployee() {
   return (
     <div className='filterEmployeeContainer'>
       <div className='filterEmployee__content'>
-        <div style={{ display: 'flex', gap: '10rem' }}>
+        <div className='filterEmployee__content__labelInput'>
           <div className='labelInput'>
             <label htmlFor='name'>
               Nome:
@@ -29,13 +31,25 @@ function FilterEmployee() {
             <label className='labelInput'>
               Departamento:
               <select id='department' onChange={ (e) => handleChange(e.target) }>
-              <option>Administrativo</option>
-              <option>TI</option>
+              {departments && departments.map((department) => {
+                return (
+                  <option key={department.id}>{department.department}</option>
+                )
+              })}
               </select>
             </label>
           </div>
         </div>
-        <button type='button' className='buttonFilter'>Pesquisa</button>
+        <button
+          type='button'
+          className='buttonFilter'
+          onClick={() => setFilteredEmployeeOnFire({
+            name: filter.name.toLowerCase(),
+            department: filter.department
+          })}
+        >
+          Pesquisa
+        </button>
       </div>
     </div>
   )
