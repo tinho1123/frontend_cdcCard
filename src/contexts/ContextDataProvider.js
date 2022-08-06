@@ -25,7 +25,7 @@ function ContextDataProvider({ children }) {
 
     useEffect(() => {
         if (filteredEmployeeonFire.name || filteredEmployeeonFire.department) {
-            setFilteredEmployee(employees.filter(emplo => emplo.name.toLowerCase().includes(filteredEmployeeonFire.name) && emplo.department === filteredEmployeeonFire.department))
+            setFilteredEmployee(employees.filter(emplo => emplo.name.toLowerCase().includes(filteredEmployeeonFire.name) && emplo.Department.department.includes(filteredEmployeeonFire.department)))
         }
     }, [setFilteredEmployeeOnFire, employees, filteredEmployeeonFire])
     

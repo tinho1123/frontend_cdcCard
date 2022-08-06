@@ -13,12 +13,45 @@ const [informationEmployee, setInformationEmployee] = useState({
   birthDate: '',
 })
 
-const handleChange = ({ id, value }) => {
+const handleChange = ({ id, value }) => { 
+  if (id === 'cpf' || id === 'salary' || id === 'birthDate' ) {
+    if (id === 'cpf' && value.length < 12) {
+      const v = value.replace(/\D/g, '');
+      const formatCPF = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+      setInformationEmployee({
+        ...informationEmployee,
+        [id]: formatCPF
+      })
+    } else if (id === 'salary') {
+    const v = value.replace(/\D/g, '');
+    // Dica pega no stack Overflow
+    // https://stackoverflow.com/questions/5731193/how-to-format-numbers
+    const salaryFormat = Intl.NumberFormat()
+    const formatSalary = salaryFormat.format(v)
+    setInformationEmployee({
+      ...informationEmployee,
+      [id]: formatSalary
+    })
+  } else if (id === 'birthDate' && value.length < 10) {
+    const v = value.replace(/\D/g, '');
+    const formatBirthDate = v.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+    setInformationEmployee({
+      ...informationEmployee,
+      [id]: formatBirthDate
+    })
+  } else {
+    setInformationEmployee({
+      ...informationEmployee,
+
+    })
+  }
+  } 
+  else {
   setInformationEmployee({
     ...informationEmployee,
     [id]: value
   })
-
+}
 }
 
 const createEmployee = async () => {
@@ -48,7 +81,15 @@ const createEmployee = async () => {
           </div>
           <div className='labelInput' htmlFor='cpf'>
             <label>CPF</label>
-            <input type='text' id='cpf' onChange={(e) => handleChange(e.target)} value={informationEmployee.cpf}/>
+            <input
+              type='text'
+              id='cpf'
+              name='cpf'
+              pattern="[+-]?\d+(?:[.,]\d+)?"
+              title='asdas'
+              onChange={(e) => handleChange(e.target)}
+              value={informationEmployee.cpf}
+            />
           </div>
           <div className='labelInput' htmlFor='department'>
             <label>Departamento</label>
