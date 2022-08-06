@@ -18,13 +18,13 @@ function EmployeesTable() {
           <th>Data de Nascimento</th>
           <th></th>
         </thead>
-        <tr>
+
           {filteredEmployee && filteredEmployee.map((employee) => {
             return (
-              <>
+              <tr>
                 <td>{employee.name}</td>
                 <td>{employee.Department.department}</td>
-                <td>{employee.salary}</td>
+                <td>R$ {employee.salary}</td>
                 <td>{employee.birth_date}</td>
               <td>
             <button
@@ -43,10 +43,9 @@ function EmployeesTable() {
               className='buttonDanger'>Excluir
             </button>
           </td>
-              </>
+              </tr>
             )
           })}
-          </tr>
  
       </table>
     </div>

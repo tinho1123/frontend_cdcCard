@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import api from '../../api/axiosConfig';
+import Context from '../../contexts/Context'
 import './styles.css'
 
 function CreateEmployeePopUp({ trigger, setTrigger }) {
+  const { departments, setCreateEmployeePopUp } = useContext(Context);
 const [informationEmployee, setInformationEmployee] = useState({
   name: '',
   cpf: '',
@@ -16,6 +19,20 @@ const handleChange = ({ id, value }) => {
     [id]: value
   })
 
+}
+
+const createEmployee = async () => {
+  const getDepartment = informationEmployee.department ? departments.find((el) => el.department.includes(informationEmployee.department)) : departments[0]
+  console.log(getDepartment);
+  await api.post('/employee', {
+    ...informationEmployee,
+    department: getDepartment.id
+
+  }).then(() => {
+    setCreateEmployeePopUp(false)
+  }).catch((err) => {
+    console.log(err)
+  })
 }
 
   return (trigger) ? (
@@ -36,8 +53,9 @@ const handleChange = ({ id, value }) => {
           <div className='labelInput' htmlFor='department'>
             <label>Departamento</label>
             <select id='department' onChange={(e) => handleChange(e.target)} value={informationEmployee.department}>
-              <option>TI</option>
-              <option>Administração</option>
+              {departments && departments.map((department) => (
+                <option key={department.id}>{department.department}</option>
+              ))}
             </select>
           </div>
           <div className='labelInput' htmlFor='salary'>
@@ -52,7 +70,7 @@ const handleChange = ({ id, value }) => {
           </div>
           <div style={{ display: 'flex', gap: '2rem' }}>
           <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Cancelar</button>
-          <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Salvar</button>
+          <button onClick={() => createEmployee()} >Salvar</button>
           </div>
         </div>
       </div>

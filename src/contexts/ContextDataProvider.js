@@ -3,6 +3,15 @@ import Context from './Context';
 import api from '../api/axiosConfig'
 
 function ContextDataProvider({ children }) {
+    const [employees, setEmployees] = useState()
+    const [departments, setDepartments] = useState()
+
+    const [filteredEmployee, setFilteredEmployee] = useState([])
+    const [filteredEmployeeonFire, setFilteredEmployeeOnFire] = useState({
+        name: '',
+        department: ''
+    })
+
     const [createEmployeePopUp, setCreateEmployeePopUp] = useState(false);
     const [editEmployeePopUp, setEditEmployeePopUp] = useState({
         active: false,
@@ -13,17 +22,7 @@ function ContextDataProvider({ children }) {
         idEmployee: '',
     });
 
-    const [employees, setEmployees] = useState()
-    const [filteredEmployee, setFilteredEmployee] = useState([])
-    const [filteredEmployeeonFire, setFilteredEmployeeOnFire] = useState({
-        name: '',
-        department: ''
-    })
-    console.log(filteredEmployeeonFire);
 
-    const [departments, setDepartments] = useState()
-
-        
     useEffect(() => {
         if (filteredEmployeeonFire.name || filteredEmployeeonFire.department) {
             setFilteredEmployee(employees.filter(emplo => emplo.name.toLowerCase().includes(filteredEmployeeonFire.name) && emplo.department === filteredEmployeeonFire.department))
@@ -46,7 +45,6 @@ function ContextDataProvider({ children }) {
         .then(({ data }) => setDepartments(data))
         .catch((err) => console.log(err))
     }
-    console.log(filteredEmployee);
 
     const value = {
         createEmployeePopUp,

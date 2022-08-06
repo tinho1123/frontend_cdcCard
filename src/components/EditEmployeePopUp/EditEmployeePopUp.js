@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import api from '../../api/axiosConfig'
+import Context from '../../contexts/Context'
 import './styles.css'
 
 function EditEmployeePopUp({ trigger, setTrigger }) {
+  const { departments } = useContext(Context)
   const [informationEmployee, setInformationEmployee] = useState({
     name: '',
     cpf: '',
@@ -38,6 +40,20 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
     )()
   }, [informationEmployee.name, trigger.idEmployee])
   
+
+
+  const updateEmployee = async () => {
+    const getDepartment = departments.find((el) => el.department.includes(informationEmployee.department))
+    await api.put(`/employee/${trigger.idEmployee}`, {
+      ...informationEmployee,
+      department: getDepartment.id
+  
+    }).then(() => {
+      setTrigger({ active: false, idEmployee: '' })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
     return (trigger.active) ? (
       <div className='createEmployeePopUpContainer'>
         <div className='createEmployeePopUp__container'>
@@ -58,9 +74,10 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
    <div className='labelInput' htmlFor='department'>
      <label>Departamento</label>
      <select id='department' onChange={(e) => handleChange(e.target)} value={informationEmployee.department}>
-       <option>TI</option>
-       <option>Administração</option>
-     </select>
+        {departments && departments.map((department) => (
+          <option key={department.id}>{department.department}</option>
+        ))}
+      </select>
    </div>
    <div className='labelInput' htmlFor='salary'>
      <label>Salário</label>
@@ -72,7 +89,7 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
    </div>
    <div style={{ display: 'flex', gap: '2rem' }}>
    <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Cancelar</button>
-   <button onClick={() => setTrigger(false)} style={{ padding: '0.5rem'}}>Salvar</button>
+   <button onClick={() => updateEmployee()} style={{ padding: '0.5rem'}}>Salvar</button>
    </div>
  </div>
  </>
