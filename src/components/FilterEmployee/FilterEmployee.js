@@ -17,7 +17,7 @@ function FilterEmployee() {
   }
 
   return (
-    <div className='filterEmployeeContainer'>
+    <div className='filterEmployeeContainer' data-testid="filterEmployeeContainer">
       <div className='filterEmployee__content'>
         <div className='filterEmployee__content__labelInput'>
           <div className='labelInput'>

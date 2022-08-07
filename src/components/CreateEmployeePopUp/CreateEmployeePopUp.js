@@ -15,7 +15,7 @@ const [informationEmployee, setInformationEmployee] = useState({
 
 const handleChange = ({ id, value }) => { 
   if (id === 'cpf' || id === 'salary' || id === 'birthDate' ) {
-    if (id === 'cpf' && value.length < 12) {
+    if (id === 'cpf' && value.length <= 14) {
       const v = value.replace(/\D/g, '');
       const formatCPF = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
       setInformationEmployee({

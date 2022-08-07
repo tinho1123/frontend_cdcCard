@@ -9,7 +9,7 @@ function EmployeesTable() {
     filteredEmployee,
   } = useContext(Context)
   return (
-    <div>
+    <div data-testid="EmployeesTableContainer">
       <table className='tableAlign'>
         <thead>
           <th>Nome</th>
