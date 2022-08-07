@@ -1,0 +1,49 @@
+.filterEmployeeContainer {
+    padding: 3rem;
+    display: flex;
+    background-color: #969A97;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterEmployee__content {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.filterEmployee__content__labelInput {
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem
+}
+
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelInput > select{
+    width: 15rem 
+}
+
+.buttonFilter {
+    padding: 1rem;
+}
+
+@media screen and (max-width: 820px) {
+ .filterEmployeeContainer {
+        padding: 1rem;
+ }
+ .filterEmployee__content {
+    flex-direction: column;
+ }
+ .filterEmployee__content__labelInput {
+    flex-direction: column;
+    gap: 1rem;
+ }
+}
