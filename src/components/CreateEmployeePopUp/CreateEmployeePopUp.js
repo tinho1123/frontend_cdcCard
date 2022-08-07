@@ -4,7 +4,7 @@ import Context from '../../contexts/Context'
 import './styles.css'
 
 function CreateEmployeePopUp({ trigger, setTrigger }) {
-  const { departments, setCreateEmployeePopUp } = useContext(Context);
+  const { departments, setCreateEmployeePopUp, setEmployees, employees } = useContext(Context);
 const [informationEmployee, setInformationEmployee] = useState({
   name: '',
   cpf: '',
@@ -32,7 +32,7 @@ const handleChange = ({ id, value }) => {
       ...informationEmployee,
       [id]: formatSalary
     })
-  } else if (id === 'birthDate' && value.length < 10) {
+  } else if (id === 'birthDate' && value.length <= 10) {
     const v = value.replace(/\D/g, '');
     const formatBirthDate = v.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
     setInformationEmployee({
@@ -56,13 +56,24 @@ const handleChange = ({ id, value }) => {
 
 const createEmployee = async () => {
   const getDepartment = informationEmployee.department ? departments.find((el) => el.department.includes(informationEmployee.department)) : departments[0]
-  console.log(getDepartment);
   await api.post('/employee', {
     ...informationEmployee,
     department: getDepartment.id
 
-  }).then(() => {
+  }).then(({ data }) => {
     setCreateEmployeePopUp(false)
+    if (employees === []) {
+      setEmployees(employees.push(data));
+    } else {
+      console.log(employees.push(data))
+    }
+    setInformationEmployee({
+      name: '',
+      cpf: '',
+      department: '',
+      salary: '',
+      birthDate: '',
+    })
   }).catch((err) => {
     console.log(err)
   })

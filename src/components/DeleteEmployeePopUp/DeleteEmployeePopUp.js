@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import api from '../../api/axiosConfig';
+import Context from '../../contexts/Context';
 import './styles.css'
 
 function DeleteEmployeePopUp({ trigger, setTrigger }) {
   const [employee, setEmployee] = useState({});
+  const { setEmployees , employees, setFilteredEmployee, filteredEmployee } = useContext(Context);
 
 
 
@@ -34,7 +36,11 @@ function DeleteEmployeePopUp({ trigger, setTrigger }) {
           <button 
           onClick={
             async () => await api.delete(`/employee/${employee.id}`)
-              .then(() => { setTrigger({ active: false, idEmployee: '' })})
+              .then(() => { 
+                setTrigger({ active: false, idEmployee: '' })
+                setEmployees(employees.filter((em) => em.id !== employee.id));
+                setFilteredEmployee(employees)
+              })
               .catch((err) => console.log(err)) 
             } 
           style={{ padding: '0.5rem'}}>Excluir</button>
