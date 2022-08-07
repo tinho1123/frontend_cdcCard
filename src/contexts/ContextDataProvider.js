@@ -3,8 +3,8 @@ import Context from './Context';
 import api from '../api/axiosConfig'
 
 function ContextDataProvider({ children }) {
-    const [employees, setEmployees] = useState()
-    const [departments, setDepartments] = useState()
+    const [employees, setEmployees] = useState([])
+    const [departments, setDepartments] = useState([])
 
     const [filteredEmployee, setFilteredEmployee] = useState([])
     const [filteredEmployeeonFire, setFilteredEmployeeOnFire] = useState({
@@ -31,7 +31,7 @@ function ContextDataProvider({ children }) {
     
     useEffect(() => {
         getData()
-    }, [setEmployees, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp])
+    }, [setEmployees, setFilteredEmployee, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp, setDepartments])
 
     const getData = async () => {
         await api.get('/employee', )

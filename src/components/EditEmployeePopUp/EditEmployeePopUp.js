@@ -4,7 +4,7 @@ import Context from '../../contexts/Context'
 import './styles.css'
 
 function EditEmployeePopUp({ trigger, setTrigger }) {
-  const { departments } = useContext(Context)
+  const { departments, setEmployees, employees, setFilteredEmployee } = useContext(Context)
   const [informationEmployee, setInformationEmployee] = useState({
     name: '',
     cpf: '',
@@ -82,8 +82,15 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
       ...informationEmployee,
       department: getDepartment.id
   
-    }).then(() => {
+    }).then(({ data }) => {
       setTrigger({ active: false, idEmployee: '' })
+        const findEmployee = employees.findIndex((em) => em.id === trigger.idEmployee);
+        setEmployees((prev) => {
+          return { ...prev, [findEmployee]: data}
+        })
+        setFilteredEmployee(employees)
+
+
     }).catch((err) => {
       console.log(err)
     })

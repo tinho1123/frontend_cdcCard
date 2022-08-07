@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Context from '../../contexts/Context'
 import './styles.css'
 
@@ -8,6 +8,7 @@ function EmployeesTable() {
     setDeleteEmployeePopUp,
     filteredEmployee,
   } = useContext(Context)
+
   return (
     <div data-testid="EmployeesTableContainer">
       <table className='tableAlign'>
@@ -19,9 +20,9 @@ function EmployeesTable() {
           <th></th>
         </thead>
 
-          {filteredEmployee && filteredEmployee.map((employee) => {
+          {filteredEmployee && filteredEmployee.map((employee, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>{employee.name}</td>
                 <td>{employee.Department.department}</td>
                 <td>R$ {employee.salary}</td>
