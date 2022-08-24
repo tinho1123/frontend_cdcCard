@@ -8,7 +8,6 @@ function EmployeesTable() {
     setDeleteEmployeePopUp,
     filteredEmployee,
   } = useContext(Context)
-  console.log(process.env.REACT_APP_API)
 
   return (
     <div data-testid="EmployeesTableContainer">

@@ -36,7 +36,6 @@ function ContextDataProvider({ children }) {
     const getData = async () => {
         await axios.get(`${process.env.REACT_APP_API}/api/employee`)
         .then(({ data }) => {
-            console.log(data);
             setEmployees(data)
             setFilteredEmployee(data)
         })
