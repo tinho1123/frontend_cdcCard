@@ -19,7 +19,7 @@ function EmployeesTable() {
           <th>Data de Nascimento</th>
           <th></th>
         </thead>
-          {filteredEmployee.length > 0 ? filteredEmployee.map((employee, index) => {
+          {(typeof filteredEmployee === 'object' && filteredEmployee.length > 0) ? filteredEmployee.map((employee, index) => {
             
             return (
               <tr key={index}>
