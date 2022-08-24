@@ -20,7 +20,7 @@ function EmployeesTable() {
           <th></th>
         </thead>
 
-          {filteredEmployee && filteredEmployee.map((employee, index) => {
+          {filteredEmployee.length > 1 && filteredEmployee.map((employee, index) => {
             return (
               <tr key={index}>
                 <td>{employee.name}</td>
