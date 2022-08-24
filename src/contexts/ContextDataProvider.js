@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Context from './Context';
-import api from '../api/axiosConfig'
+import axios from 'axios';
 
 function ContextDataProvider({ children }) {
     const [employees, setEmployees] = useState([])
@@ -34,15 +34,14 @@ function ContextDataProvider({ children }) {
     }, [setEmployees, setFilteredEmployee, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp, setDepartments])
 
     const getData = async () => {
-        await api.get('employee')
+        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/employee`)
         .then((res) => {
             console.log(res);
             setEmployees(res.data)
             setFilteredEmployee(res.data)
         })
         .catch((err) => console.log(err))
-
-        await api.get('/department')
+        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/department`)
         .then(({ data }) => setDepartments(data))
         .catch((err) => console.log(err))
     }

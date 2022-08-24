@@ -1,5 +1,5 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react'
-import api from '../../api/axiosConfig';
 import Context from '../../contexts/Context'
 import './styles.css'
 
@@ -56,7 +56,7 @@ const handleChange = ({ id, value }) => {
 
 const createEmployee = async () => {
   const getDepartment = informationEmployee.department ? departments.find((el) => el.department.includes(informationEmployee.department)) : departments[0]
-  await api.post('/employee', {
+  await axios.post(`${process.env.REACT_APP_HOSTNAME}/api/employee`, {
     ...informationEmployee,
     department: getDepartment.id
 

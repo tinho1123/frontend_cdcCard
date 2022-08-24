@@ -1,5 +1,5 @@
+import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import api from '../../api/axiosConfig'
 import Context from '../../contexts/Context'
 import './styles.css'
 
@@ -59,7 +59,7 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
   useEffect(() => {
     (async() => {
       if (!informationEmployee.name) {
-        await api.get(`/employee/${trigger.idEmployee}`, )
+        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/employee/${trigger.idEmployee}`, )
         .then(({data}) => setInformationEmployee({
           name: data.name,
           cpf: data.CPF?.cpf,
@@ -78,7 +78,7 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
 
   const updateEmployee = async () => {
     const getDepartment = departments.find((el) => el.department.includes(informationEmployee.department))
-    await api.put(`/employee/${trigger.idEmployee}`, {
+    await axios.put(`${process.env.REACT_APP_HOSTNAME}/api/employee/${trigger.idEmployee}`, {
       ...informationEmployee,
       department: getDepartment.id
   
