@@ -35,10 +35,10 @@ function ContextDataProvider({ children }) {
 
     const getData = async () => {
         await axios.get(`${process.env.REACT_APP_API}/api/employee`)
-        .then((res) => {
-            console.log(res);
-            setEmployees(res.data)
-            setFilteredEmployee(res.data)
+        .then(({ data }) => {
+            console.log(data);
+            setEmployees(data)
+            setFilteredEmployee(data)
         })
         .catch((err) => console.log(err))
         await axios.get(`${process.env.REACT_APP_API}/api/department`)
