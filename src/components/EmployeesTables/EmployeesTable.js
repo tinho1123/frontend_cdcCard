@@ -19,8 +19,8 @@ function EmployeesTable() {
           <th>Data de Nascimento</th>
           <th></th>
         </thead>
-
-          {filteredEmployee.length > 1 ? filteredEmployee.map((employee, index) => {
+          {filteredEmployee.length > 0 ? filteredEmployee.map((employee, index) => {
+            
             return (
               <tr key={index}>
                 <td>{employee.name}</td>

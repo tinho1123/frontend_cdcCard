@@ -34,7 +34,7 @@ function ContextDataProvider({ children }) {
     }, [setEmployees, setFilteredEmployee, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp, setDepartments])
 
     const getData = async () => {
-        await api.get('/employee', )
+        await api.get('/employee',)
         .then(({ data }) => {
             setEmployees(data)
             setFilteredEmployee(data)
