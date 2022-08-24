@@ -5,7 +5,7 @@ import './styles.css'
 
 function DeleteEmployeePopUp({ trigger, setTrigger }) {
   const [employee, setEmployee] = useState({});
-  const { setEmployees , employees, setFilteredEmployee, filteredEmployee } = useContext(Context);
+  const { setEmployees , employees, setFilteredEmployee } = useContext(Context);
 
 
 

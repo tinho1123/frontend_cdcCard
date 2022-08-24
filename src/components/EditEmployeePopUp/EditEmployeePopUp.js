@@ -62,8 +62,8 @@ function EditEmployeePopUp({ trigger, setTrigger }) {
         await api.get(`/employee/${trigger.idEmployee}`, )
         .then(({data}) => setInformationEmployee({
           name: data.name,
-          cpf: data.CPF.cpf,
-          department: data.Department.department,
+          cpf: data.CPF?.cpf,
+          department: data.Department?.department,
           salary: data.salary,
           birthDate: data.birth_date,
   
