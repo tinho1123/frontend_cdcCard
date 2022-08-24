@@ -34,14 +34,15 @@ function ContextDataProvider({ children }) {
     }, [setEmployees, setFilteredEmployee, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp, setDepartments])
 
     const getData = async () => {
-        await api.get('/employee',)
+        await api.get('/employee')
         .then(({ data }) => {
             setEmployees(data)
             setFilteredEmployee(data)
+            console.log(data)
         })
         .catch((err) => console.log(err))
 
-        await api.get('/department', )
+        await api.get('/department')
         .then(({ data }) => setDepartments(data))
         .catch((err) => console.log(err))
     }

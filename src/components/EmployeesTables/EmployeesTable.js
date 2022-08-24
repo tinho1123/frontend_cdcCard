@@ -19,8 +19,7 @@ function EmployeesTable() {
           <th>Data de Nascimento</th>
           <th></th>
         </thead>
-        {console.log(filteredEmployee)}
-        {console.log(typeof filteredEmployee)}
+
           {(typeof filteredEmployee === 'object' && filteredEmployee.length > 0) ? filteredEmployee.map((employee, index) => {
             
             return (
