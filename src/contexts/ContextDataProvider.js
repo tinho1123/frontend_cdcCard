@@ -34,14 +34,14 @@ function ContextDataProvider({ children }) {
     }, [setEmployees, setFilteredEmployee, setDeleteEmployeePopUp, setEditEmployeePopUp, setCreateEmployeePopUp, setDepartments])
 
     const getData = async () => {
-        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/employee`)
+        await axios.get(`${process.env.REACT_APP_API}/api/employee`)
         .then((res) => {
             console.log(res);
             setEmployees(res.data)
             setFilteredEmployee(res.data)
         })
         .catch((err) => console.log(err))
-        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/department`)
+        await axios.get(`${process.env.REACT_APP_API}/api/department`)
         .then(({ data }) => setDepartments(data))
         .catch((err) => console.log(err))
     }

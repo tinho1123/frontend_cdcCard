@@ -12,7 +12,7 @@ function DeleteEmployeePopUp({ trigger, setTrigger }) {
   useEffect(() => {
     (async () => {
       if (!employee.name) {
-        await axios.get(`${process.env.REACT_APP_HOSTNAME}/api/employee/${trigger.idEmployee}`)
+        await axios.get(`${process.env.REACT_APP_API}/api/employee/${trigger.idEmployee}`)
         .then(({data}) => setEmployee(data))
         .catch((err) => console.log(err))
       }
@@ -35,7 +35,7 @@ function DeleteEmployeePopUp({ trigger, setTrigger }) {
           <button onClick={() => setTrigger({ active: false, idEmployee: '' })} style={{ padding: '0.5rem'}}>Cancelar</button>
           <button 
           onClick={
-            async () => await axios.delete(`${process.env.REACT_APP_HOSTNAME}/api/employee/${employee.id}`)
+            async () => await axios.delete(`${process.env.REACT_APP_API}/api/employee/${employee.id}`)
               .then(() => { 
                 setTrigger({ active: false, idEmployee: '' })
                 setEmployees(employees.filter((em) => em.id !== employee.id));

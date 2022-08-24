@@ -56,7 +56,7 @@ const handleChange = ({ id, value }) => {
 
 const createEmployee = async () => {
   const getDepartment = informationEmployee.department ? departments.find((el) => el.department.includes(informationEmployee.department)) : departments[0]
-  await axios.post(`${process.env.REACT_APP_HOSTNAME}/api/employee`, {
+  await axios.post(`${process.env.REACT_APP_API}/api/employee`, {
     ...informationEmployee,
     department: getDepartment.id
 
