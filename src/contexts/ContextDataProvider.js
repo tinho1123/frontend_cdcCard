@@ -35,10 +35,10 @@ function ContextDataProvider({ children }) {
 
     const getData = async () => {
         await api.get('/employee')
-        .then(({ data }) => {
-            setEmployees(data)
-            setFilteredEmployee(data)
-            console.log(data)
+        .then((res) => {
+            console.log(res);
+            setEmployees(res.data)
+            setFilteredEmployee(res.data)
         })
         .catch((err) => console.log(err))
 
